@@ -1,0 +1,50 @@
+{
+  "name": "krs-api-server",
+  "version": "0.0.1",
+  "description": "KRS API Server",
+  "main": "./dist/server.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "pnpm run build:source && pnpm run start:server",
+    "start:server": "node ./dist/server.js",
+    "lint": "pnpm exec eslint ./src",
+    "clean": "rm -rf ./dist",
+    "build:source": "pnpm exec tsc --project tsconfig.json",
+    "test": "NODE_ENV=test pnpm exec mocha --exit --timeout 5000 -r dotenv/config -r dotenv -r ts-node/register test/**/*.test.ts"
+  },
+  "keywords": [],
+  "author": "Ramazan Yildiz <ramazangsu@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.3.16",
+    "@types/chai-as-promised": "^7.1.8",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/mocha": "latest",
+    "@types/node": "^18.19.34",
+    "@types/sinon": "^17.0.3",
+    "@types/supertest": "^6.0.2",
+    "chai": "^4.4.1",
+    "chai-as-promised": "^8.0.0",
+    "eslint": "^8.37.0",
+    "eslint-plugin-github": "^4.7.0",
+    "mocha": "latest",
+    "moment": "^2.30.1",
+    "sinon": "^18.0.0",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5",
+    "supertest": "^7.0.0",
+    "testdouble": "^3.20.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.3"
+  },
+  "dependencies": {
+    "@types/socket.io": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "jose": "^4.13.1",
+    "loglevel": "^1.9.1",
+    "receiptline": "^1.16.1"
+  }
+}

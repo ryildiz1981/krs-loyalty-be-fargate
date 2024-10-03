@@ -1,0 +1,12 @@
+======= Request =======
+<STX>540<FS>194<FS>20240715<FS>112229<FS>9.9LEK<FS>9.9LEK<FS>30<FS>0<FS>3103<FS>7020113200435305<FS>0<FS>0.0<FS>0<FS>0.0<FS>0<FS><FS><FS>2024-07-15<FS><ETX>
+
+======= Response =======
+<STX>540<FS>194<FS>0<FS>|a!00|<FS><FS><FS>Bal=000000         <FS>20240715<FS>012229<FS>78032<FS><FS>00000<FS>Register Card<FS><FS>$   0.00<ETX>
+
+
+====== Receipt =========
+
+
+
+

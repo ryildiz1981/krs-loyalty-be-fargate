@@ -1,0 +1,99 @@
+==== Configuration Request ====
+<STX>640<FS>V99<FS>v9.9LEK<FS>T194<FS><ETX>
+Routing Code, OpCode, ver, ver, TerminalId
+
+------------------------------------------------------------------------------------------------------------------------
+<FS>2Bal Receipt<FS>
+/%CE---- LOYALTY BALANCE INQUIRY -----~%CE~
+%CE%2X%VN%1X~
+%CE       ~
+~
+%IP%CE     TRANSACTION INFORMATION      ~
+Date:            %DT~
+Cashier:         %CI~
+Terminal ID:     %TD~
+Card #:          %XC~
+%CE   ~
+~
+%IP%CE     CARDHOLDER INFORMATION     ~
+%CE     ~
+%CE%2X ** %XN **~
+%CE%2X Balance = %XB %1X  ~
+ ~
+%CE   ~
+%CE---- LOYALTY BALANCE INQUIRY -----~
+<FS>E1<ETX>
+
+------------------------------------------------------------------------------------------------------------------------
+
+<FS>2Issue Receipt<FS>
+/%LF10000~
+~
+%CE%2XWingPoints%1X~
+~
+%CE%2X%VN%1X~
+%CE%2X%SA%1X~
+~
+%IP%CETRANSACTION INFORMATION~
+Date:            %DT~
+Terminal ID:     %TD~
+Cashier:         %CI~
+Promo ID:        %Xp~
+Account #:       %XC~
+~%CE   ~
+Purchase Amount: $%XD~
+Gallons:         %XG~
+Points Earned:   %UP~
+~
+Invoice #:       %P2~
+Tail #:          %P3~
+%CE ~
+~
+%IP%CE%2X%XN~
+%CE%2HCurrent Balance~
+%CE%2H%XB~
+%CE ~
+~
+%IFXT{~
+%IP%CEINSTANT MESSAGE~
+%XT~
+%FI}~
+%CE   ~
+%T1<ETX><SOH>~
+%T2~
+%T3~
+%T4~
+%CEVisit www.wingpoints.com~
+%CEfor program details.
+<FS>/457<FS>1LR.R
+
+
+------------------------------------------------------------------------------------------------------------------------
+<FS>2Redeem Receipt<FS>
+/%CE---- LOYALTY REDEMPTION -----~
+%CE       ~%CE%2X%VN%1X~
+%CE       ~~%IP%CE     TRANSACTION INFORMATION      ~
+Date:            %DT~
+Cashier:         %CI~
+Terminal ID:     %TD~
+Auth number:     %XA~
+Card #:          %XC~
+%CE   ~~%IP%CE     CARDHOLDER INFORMATION       ~
+~
+%CE%2X ** %XN **~
+%CE%2X Points Redeemed = %XR %1X  ~
+%CE       ~
+~
+%IFXs{~
+%CE   ~
+X--------------------------------------~
+(Cardholder Name)~
+%FI}~
+%C<ETX><STX>E    ~
+~
+%CE---- LOYALTY REDEMPTION -----
+<FS>/346<FS>1LR.B
+
+
+
+

@@ -1,0 +1,8 @@
+ISSUE REQUEST
+----------------------------------------------------------------------------------------------------
+<STX>640<FS>194<FS>20240723<FS>124800<FS>v9.9LEK<FS>v9.9LEK<FS>10<FS>0<FS>3103<FS>7020113200035014<FS>5<FS>200<FS>2<FS>0<FS>0<FS>INV#1234<FS>TL#123<FS>2024-07-23<FS><ETX>
+
+ISSUE RESPONSE
+----------------------------------------------------------------------------------------------------
+<STX>640<FS>194<FS>0<FS>|a%414090|<FS><FS><FS>Points=195         <FS>20240723<FS>024816<FS>42<FS><FS>00195<FS>Test old Card<FS>Thank you for using your Phillips 66    Card! You have just earned double       points on this purchase.                <FS>4<ETX>
+

@@ -1,0 +1,82 @@
+name: Loyalty API
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install
+        run: pnpm install
+
+      - name: Test
+        run: |
+          echo "${{ secrets.ENV }}" > .env
+          npm run test
+          rm .env
+
+      - name: Build
+        run: |
+          npm ci
+          npm run build:source
+          cp package.json ./dist/
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: ./dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+
+      - run: ls -lart
+
+      - name: Create ENV file
+        run: echo "${{ secrets.ENV }}" > env
+
+      - name: resync files
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avzr --delete
+          path: ./*
+          remote_path: /home/ubuntu/app/
+          remote_host: ${{ secrets.EC2_HOST }}
+          remote_user: ubuntu
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Install SSH Key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Reload Service
+        run: |
+          ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} "
+            sudo -iE
+            cd /home/ubuntu/app
+            ls -lart
+            mv env .env
+            npm i
+            pm2 stop krs-loyalty-server
+            pm2 start server.js --watch --name krs-loyalty-server
+            pm2 status krs-loyalty-server
+          "
