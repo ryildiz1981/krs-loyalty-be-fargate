@@ -1,8 +1,8 @@
 # Use the official Node.js image as a base
 FROM --platform=linux/amd64 node:22
 
-ENV WEB_SOCKET_PORT=80
-ENV EXPRESS_PORT=8058
+ENV WEB_SOCKET_PORT=8443
+ENV EXPRESS_PORT=8080
 ENV USE_TEST_CARD_NUMBER=true
 ENV TEST_CARD_NUMBER=7020113200035014
 
@@ -31,7 +31,8 @@ RUN npm -g i pnpm
 RUN npm run build:source
 
 # Expose the port that the app runs on (change if necessary)
-EXPOSE 80
+EXPOSE 8443
+EXPOSE 8080
 
 #Command to run the application
-CMD ["node", "./dist/server.js"]
+CMD ["node", "/app/dist/server.js"]

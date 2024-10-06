@@ -3,10 +3,10 @@ dotenv.config();
 import "node:process";
 import log from "loglevel";
 import app from "./app";
-import {webSocketServer} from "./loyalty/webSocketServer";
+import { webSocketServer } from "./loyalty/webSocketServer";
 
 log.setDefaultLevel("DEBUG");
-const port: number  = +process.env.EXPRESS_PORT!;
+const port: number = +process.env.EXPRESS_PORT!;
 const wsPort: number = +process.env.WEB_SOCKET_PORT!;
 
 webSocketServer.start(wsPort);
