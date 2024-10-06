@@ -1,5 +1,5 @@
 # Use the official Node.js image as a base
-FROM node:22
+FROM --platform=linux/amd64 node:22
 
 ENV WEB_SOCKET_PORT=80
 ENV EXPRESS_PORT=8058

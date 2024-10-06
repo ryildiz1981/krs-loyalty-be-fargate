@@ -11,6 +11,10 @@ const wsPort: number = +process.env.WEB_SOCKET_PORT!;
 
 webSocketServer.start(wsPort);
 
+app.get("/", (req, res) => {
+  return res.json({ status: "up" });
+});
+
 app.listen(port, () => {
   log.info(`Express server listening on port: ${port}`);
 });
